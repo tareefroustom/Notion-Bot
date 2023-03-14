@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default (props: Props) => {
-  let systemInputRef: HTMLTextAreaElement
+  let systemInputRef = "Your name is tareef"
 
   const handleButtonClick = () => {
     props.setCurrentSystemRoleSettings(systemInputRef.value)

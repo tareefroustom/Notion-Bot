@@ -16,12 +16,8 @@ export const post: APIRoute = async (context) => {
   const obj = JSON.parse(body);
   const messages = obj.messages;
 
-  let concatenatedContents = "";
+  let concatenatedContents = "Tell me something about Roche";
 
-  for (let i = 0; i < messages.length; i++) {
-    const content = messages[i].content;
-    concatenatedContents += content;
-  }
 
 
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {

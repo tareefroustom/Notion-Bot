@@ -11,7 +11,7 @@ export const generatePayload = (apiKey: string, messages: ChatMessage[]): Reques
     model: 'gpt-3.5-turbo',
     messages,
     temperature: 0.6,
-    stream: True
+    stream: true,
   }),
 })
 

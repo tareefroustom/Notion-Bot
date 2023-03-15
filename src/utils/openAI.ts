@@ -17,8 +17,8 @@ export const generatePayload = (apiKey: string, messages: ChatMessage[]): Reques
 export const parseOpenAIStream = (rawResponse: Response): string => {
   const encoder = new TextEncoder()
 
-  const jsonResponse = rawResponse.jsonSync()
-  const output = jsonResponse.choices[0].delta?.content || ''
+  const jsonResponse = rawResponse.json()
+  const output = jsonResponse.choices[0]
 
   return output
 }

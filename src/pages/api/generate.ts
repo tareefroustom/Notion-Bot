@@ -23,7 +23,7 @@ export const post: APIRoute = async (context) => {
       sheet_name: 'gpt panda',
       Excluded_Sheets: ['Tester'],
       operation: 'Ask_Question',
-      Question: 'List all PD 1L1 drugs alongs with the most negative and most positive sentence about each one of them',
+      Question: context,
       Document_URL: 'https://docs.google.com/spreadsheets/d/1rsEva9HsqHjTOr8yAhXzuHH8VK7y4LwtzmX-KIRjovY/edit?usp=sharing',
       ...body // include any additional data from the original request body
     })
@@ -35,7 +35,6 @@ export const post: APIRoute = async (context) => {
 
   const responseData = await response.json();
 
-  return context
   return new Response(JSON.stringify(responseData), {
     headers: {
       'Content-Type': 'application/json'

@@ -14,8 +14,8 @@ export const generatePayload = (apiKey: string, messages: ChatMessage[]): Reques
   }),
 })
 
-export const parseOpenAIStream {
-  const jsonResponse = rawResponse.json()
+export const parseOpenAIStream = async (rawResponse: Response): Promise<any> => {
+  const jsonResponse = await rawResponse.json()
   const output = jsonResponse.choices[0]?.text || ''
   return jsonResponse
 }

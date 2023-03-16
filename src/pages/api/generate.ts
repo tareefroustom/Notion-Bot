@@ -28,7 +28,7 @@ async function concatenateMessages(json) {
 }
 
 export const post: APIRoute = async (context) => {
-  const urlParams = new URLSearchParams(context.request.url.split('?')[1]);
+  const urlParams = new URLSearchParams(context.request.url.split('?')[0]);
   const id = urlParams.get('id');
 
   return new Response(JSON.stringify({ id }), {

@@ -27,7 +27,7 @@ function concatenateMessages(json) {
   }
 }
 
-export const post: APIRoute = async (context) => {
+export const post: APIRoute = (context) => {
   const question = concatenateMessages(context.request.json());
   return new Response(JSON.stringify({ question }), {
     headers: {

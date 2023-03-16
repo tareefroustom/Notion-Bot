@@ -10,17 +10,21 @@ const httpsProxy = import.meta.env.HTTPS_PROXY
 const baseUrl = (import.meta.env.OPENAI_API_BASE_URL || 'https://api.openai.com').trim().replace(/\/$/,'')
 const sitePassword = import.meta.env.SITE_PASSWORD
 
-function concatenateMessages(json) {
-  const obj = JSON.parse(json);
-  const messages = obj.messages;
-  let concatenatedContents = "";
+async function concatenateMessages(json) {
+  try {
+    const obj = await JSON.parse(json);
+    const messages = obj.messages;
+    let concatenatedContents = "";
 
-  for (let i = 0; i < messages.length; i++) {
-    const content = messages[i].content;
-    concatenatedContents += content;
+    for (let i = 0; i < messages.length; i++) {
+      const content = messages[i].content;
+      concatenatedContents += content;
+    }
+
+    return concatenatedContents;
+  } catch (error) {
+    console.error(error);
   }
-
-  return concatenatedContents;
 }
 
 export const post: APIRoute = async (context) => {

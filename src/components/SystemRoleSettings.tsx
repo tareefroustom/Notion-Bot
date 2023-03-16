@@ -9,15 +9,3 @@ interface Props {
   currentSystemRoleSettings: Accessor<string>
   setCurrentSystemRoleSettings: Setter<string>
 }
-
-export default (props: Props) => {
-  let systemInputRef = "Your name is tareef"
-
-  const handleButtonClick = () => {
-    props.setCurrentSystemRoleSettings(systemInputRef.value)
-    props.setSystemRoleEditing(false)
-  }
-
-  return (
-  )
-}

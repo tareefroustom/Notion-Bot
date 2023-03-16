@@ -51,7 +51,7 @@ export const post: APIRoute = async (context) => {
   }
 
   const responseData = await response.json();
-  return new Response(JSON.stringify(responseData), {
+  return new Response(JSON.stringify(responseData).results, {
     headers: {
       'Content-Type': 'application/json'
     }

@@ -28,7 +28,7 @@ async function concatenateMessages(json) {
 }
 
 export const post: APIRoute = async (context) => {
-  const body = await concatenateMessages(context.request.json());
+  const question = await concatenateMessages(context.request.json());
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
     method: 'POST',
     headers: {
@@ -39,7 +39,7 @@ export const post: APIRoute = async (context) => {
       sheet_name: 'gpt panda',
       Excluded_Sheets: ['Tester'],
       operation: 'Ask_Question',
-      Question: body,
+      Question: question,
       Document_URL: 'https://docs.google.com/spreadsheets/d/1rsEva9HsqHjTOr8yAhXzuHH8VK7y4LwtzmX-KIRjovY/edit?usp=sharing',
       //...body // include any additional data from the original request body
     })

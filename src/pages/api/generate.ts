@@ -29,7 +29,7 @@ async function concatenateMessages(json) {
 
 export const post: APIRoute = async (context) => {
   const searchParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
+  const id = searchParams.get('id');
   console.log(`id: ${id}`); // log the value of the id parameter
 
   return new Response(JSON.stringify({ id }), {

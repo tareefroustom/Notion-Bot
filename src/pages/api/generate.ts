@@ -31,7 +31,7 @@ export const post: APIRoute = async (context) => {
   const body = await context.request.json();
   const question = await concatenateMessages(JSON.stringify(body));
   
-  return new Response(body, {
+  return new Response(question, {
     headers: {
       'Content-Type': 'application/json'
     }

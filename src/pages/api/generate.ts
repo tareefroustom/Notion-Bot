@@ -29,10 +29,13 @@ async function concatenateMessages(json) {
 
 export const post: APIRoute = async (context) => {
   const body = await context.request.json();
-
+  const question = await concatenateMessages(JSON.stringify(body));
+  
   return new Response(body, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
 };
+
+

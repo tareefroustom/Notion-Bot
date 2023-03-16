@@ -28,11 +28,12 @@ async function concatenateMessages(json) {
 }
 
 export const post: APIRoute = async (context) => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const id = searchParams.get('id');
-  console.log(`id: ${id}`); // log the value of the id parameter
-
-  return new Response(JSON.stringify({ id }), {
+  
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const page_type = urlParams.get('page_type')
+  
+  return new Response(JSON.stringify({ page_type }), {
     headers: {
       'Content-Type': 'application/json'
     }

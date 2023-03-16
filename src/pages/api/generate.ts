@@ -30,13 +30,15 @@ async function concatenateMessages(json) {
 export const post: APIRoute = async (context) => {
   const body = await context.request.json();
   const question = await concatenateMessages(JSON.stringify(body));
+  const urlParams = new URLSearchParams(context.request.url.search);
+  const userEmail = urlParams.get('User_Email');
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      User_Email: 'tareef.ramez',
+      User_Email: userEmail,
       sheet_name: 'gpt panda',
       Excluded_Sheets: ['Tester'],
       operation: 'Ask_Question',
@@ -50,13 +52,14 @@ export const post: APIRoute = async (context) => {
     throw new Error(`Request failed with status ${response.status}`);
   }
 
-  const responseData = await response.json();
-  return new Response(JSON.stringify(responseData), {
+  const urlParamsObj = Object.fromEntries(urlParams); // <-- convert URLSearchParams to plain object
+  return new Response(JSON.stringify(urlParamsObj), { // <-- return JSON object containing URL parameters
     headers: {
       'Content-Type': 'application/json'
     }
   });
 };
+
 
 
 

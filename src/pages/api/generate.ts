@@ -27,9 +27,6 @@ async function concatenateMessages(json) {
   }
 }
 
-async function getCurrentSearchParams() {
-  return URLSearchParams(window.location.search);
-}
 
 export const post: APIRoute = async (context) => {
   const body = await context.request.json();
@@ -54,12 +51,8 @@ export const post: APIRoute = async (context) => {
     throw new Error(`Request failed with status ${response.status}`);
   }
 
-  const responseData = await response.json();
-  const urlparams = await getCurrentSearchParams();
-  
-  
-  //return new Response(JSON.stringify(responseData), {
-  return new Response(urlparams, {
+  const responseData = await response.json();  
+  return new Response(JSON.stringify(responseData), {
     headers: {
       'Content-Type': 'application/json'
     }

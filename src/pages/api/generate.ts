@@ -39,7 +39,7 @@ export const post: APIRoute = async (context) => {
       sheet_name: 'gpt panda',
       Excluded_Sheets: ['Tester'],
       operation: 'Ask_Question',
-      Question: question.toString(),
+      Question: question,
       Document_URL: 'https://docs.google.com/spreadsheets/d/1rsEva9HsqHjTOr8yAhXzuHH8VK7y4LwtzmX-KIRjovY/edit?usp=sharing',
       //...body // include any additional data from the original request body
     })

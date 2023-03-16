@@ -61,10 +61,10 @@ export const post: APIRoute = async (context) => {
   const urlparams = await etCurrentSearchParams();
   
   
-  //return new Response(JSON.stringify(responseData), {
-  return new Response(urlparams, {
-    //headers: {
-      //'Content-Type': 'application/json'
+  return new Response(JSON.stringify(responseData), {
+  //return new Response(urlparams, {
+    headers: {
+      'Content-Type': 'application/json'
     }
   });
 };

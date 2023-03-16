@@ -10,7 +10,7 @@ const httpsProxy = import.meta.env.HTTPS_PROXY
 const baseUrl = (import.meta.env.OPENAI_API_BASE_URL || 'https://api.openai.com').trim().replace(/\/$/,'')
 const sitePassword = import.meta.env.SITE_PASSWORD
 
-async function concatenateMessages(json) {
+function concatenateMessages(json) {
   try {
     const obj = await JSON.parse(json);
     const messages = obj.messages;
@@ -27,8 +27,8 @@ async function concatenateMessages(json) {
   }
 }
 
-export const post: APIRoute = async (context) => {
-  const question = await concatenateMessages(context.request.json());
+export const post: APIRoute = (context) => {
+  const question = concatenateMessages(context.request.json());
   return new Response(JSON.stringify({ question }), {
     headers: {
       'Content-Type': 'application/json'

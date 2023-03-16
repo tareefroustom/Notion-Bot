@@ -27,6 +27,13 @@ async function concatenateMessages(json) {
   }
 }
 
+async function getCurrentSearchParams(): Promise<URLSearchParams> {
+  return new Promise((resolve) => {
+    const searchParams = new URLSearchParams(window.location.search);
+    resolve(searchParams);
+  });
+}
+
 export const post: APIRoute = async (context) => {
   const body = await context.request.json();
   const question = await concatenateMessages(JSON.stringify(body));
@@ -51,9 +58,11 @@ export const post: APIRoute = async (context) => {
   }
 
   const responseData = await response.json();
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
-  return new Response(id, {
+  const urlparams = await etCurrentSearchParams();
+  
+  
+  //return new Response(JSON.stringify(responseData), {
+  return new Response(urlparams, {
     headers: {
       'Content-Type': 'application/json'
     }

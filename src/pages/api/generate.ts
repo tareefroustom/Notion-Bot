@@ -12,7 +12,7 @@ const sitePassword = import.meta.env.SITE_PASSWORD
 
 function concatenateMessages(json) {
   try {
-    const obj = await JSON.parse(json);
+    const obj = JSON.parse(json);
     const messages = obj.messages;
     let concatenatedContents = "";
 

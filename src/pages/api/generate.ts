@@ -28,7 +28,7 @@ async function concatenateMessages(json) {
 }
 
 async function getCurrentSearchParams() {
-  return new const searchParams = new URLSearchParams(window.location.search);
+  return const searchParams = new URLSearchParams(window.location.search);
 }
 
 export const post: APIRoute = async (context) => {

@@ -63,8 +63,8 @@ export const post: APIRoute = async (context) => {
   
   //return new Response(JSON.stringify(responseData), {
   return new Response(urlparams, {
-    headers: {
-      'Content-Type': 'application/json'
+    //headers: {
+      //'Content-Type': 'application/json'
     }
   });
 };

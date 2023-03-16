@@ -27,11 +27,8 @@ async function concatenateMessages(json) {
   }
 }
 
-async function getCurrentSearchParams(): Promise<URLSearchParams> {
-  return new Promise((resolve) => {
-    const searchParams = new URLSearchParams(window.location.search);
-    resolve(searchParams);
-  });
+async function getCurrentSearchParams() {
+  return new const searchParams = new URLSearchParams(window.location.search);
 }
 
 export const post: APIRoute = async (context) => {
@@ -68,7 +65,3 @@ export const post: APIRoute = async (context) => {
     }
   });
 };
-
-
-
-

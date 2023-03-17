@@ -31,8 +31,16 @@ export const post: APIRoute = async (context) => {
   console.log(context);
   const body = await context.request.json();
   const question = await concatenateMessages(JSON.stringify(body));
-  const params = new URLSearchParams(context.request.headers.referer.split('?')[0]);
-  const documentUrl = params.get('Document_URL');
+  
+  
+  const referer = await context.request.headers.get('referer');
+  const searchParams = new URLSearchParams(referer.split('?')[1]);
+  const documentUrl = searchParams.get('Document_URL');
+  
+  //const params = new URLSearchParams(context.request.headers.referer.split('?')[0]);
+  //const documentUrl = params.get('Document_URL');
+  
+  
   console.log(documentUrl);
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
     method: 'POST',

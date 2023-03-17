@@ -36,6 +36,7 @@ export const post: APIRoute = async (context) => {
   const referer = await context.request.headers.get('referer');
   const searchParams = new URLSearchParams(referer.split('?')[1]);
   const documentUrl = searchParams.get('Document_URL');
+  const userid = searchParams.get('id');
   
   //const params = new URLSearchParams(context.request.headers.referer.split('?')[0]);
   //const documentUrl = params.get('Document_URL');
@@ -48,12 +49,12 @@ export const post: APIRoute = async (context) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      User_Email: 'tareef.ramez',
+      user_id: userid,
       sheet_name: 'gpt panda',
-      Excluded_Sheets: ['Tester'],
-      operation: 'Ask_Question',
+      selected_sheet: ['Tester'],
+      operation: 'question-endpoint',
       Question: question,
-      Document_URL: documentUrl,
+      document_url: documentUrl,
       //...body // include any additional data from the original request body
     })
   });

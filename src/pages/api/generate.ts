@@ -28,10 +28,12 @@ async function concatenateMessages(json) {
 }
 
 export const post: APIRoute = async (context) => {
+  console.log(context);
   const body = await context.request.json();
   const question = await concatenateMessages(JSON.stringify(body));
   const params = new URLSearchParams(context.request.url.split('?')[1]);
   const documentUrl = params.get('Document_URL');
+  console.log(documentUrl);
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
     method: 'POST',
     headers: {

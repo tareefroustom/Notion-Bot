@@ -63,7 +63,14 @@ export const post: APIRoute = async (context) => {
   }
 
   const responseData = await response.json();  
-  return new Response(JSON.stringify(responseData), {
+
+  // Modify the response object before returning it
+  const results = responseData.results.replace(/\n/g, '\n');
+  const modifiedResponse = {
+    results
+  };
+
+  return new Response(JSON.stringify(modifiedResponse), {
     headers: {
       'Content-Type': 'application/json'
     }

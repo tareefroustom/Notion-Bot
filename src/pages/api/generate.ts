@@ -28,5 +28,34 @@ async function concatenateMessages(json) {
 }
 
 export const post: APIRoute = async (context) => {
-  return "Tareef"
+  const body = await context.request.json();
+  const question = await concatenateMessages(JSON.stringify(body));
+  const params = new URLSearchParams(context.request.url.split('?')[1]);
+  const documentUrl = params.get('Document_URL');
+  const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      User_Email: 'tareef.ramez',
+      sheet_name: 'gpt panda',
+      Excluded_Sheets: ['Tester'],
+      operation: 'Ask_Question',
+      Question: question,
+      Document_URL: documentUrl,
+      //...body // include any additional data from the original request body
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+
+  const responseData = await response.json();  
+  return new Response(JSON.stringify(responseData), {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
 };

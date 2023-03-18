@@ -35,7 +35,7 @@ export const post: APIRoute = async (context) => {
   
   const referer = await context.request.headers.get('referer');
   const searchParams = new URLSearchParams(referer.split('?')[1]);
-  const documentUrl = searchParams.get('Document_URL');
+  //const documentUrl = searchParams.get('Document_URL');
   const userid = searchParams.get('id');
   
   //const params = new URLSearchParams(context.request.headers.referer.split('?')[0]);

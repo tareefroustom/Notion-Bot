@@ -42,7 +42,7 @@ export const post: APIRoute = async (context) => {
   //const documentUrl = params.get('Document_URL');
   
   
-  console.log(documentUrl);
+  //console.log(documentUrl);
   const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
     method: 'POST',
     headers: {

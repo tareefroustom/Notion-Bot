@@ -49,12 +49,12 @@ export const post: APIRoute = async (context) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      user_id: userid,
-      sheet_name: 'gpt panda',
-      selected_sheet: ['Tester'],
+      sheet_unique_id: userid,
+      //sheet_name: 'gpt panda',
+      //selected_sheet: ['Tester'],
       operation: 'question-endpoint',
       Question: question,
-      document_url: documentUrl,
+      //document_url: documentUrl,
       //...body // include any additional data from the original request body
     })
   });

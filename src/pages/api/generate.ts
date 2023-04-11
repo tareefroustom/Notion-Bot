@@ -43,7 +43,7 @@ export const post: APIRoute = async (context) => {
   
   
   //console.log(documentUrl);
-  const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/call', {
+  const response = await fetch('https://nnq4xy5uj3.execute-api.eu-west-1.amazonaws.com/dev/notion', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
